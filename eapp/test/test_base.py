@@ -30,7 +30,6 @@ def test_app():
 def test_client(test_app):
     return test_app.test_client()
 
-
 @pytest.fixture
 def test_session(test_app: Flask):
     yield db.session
