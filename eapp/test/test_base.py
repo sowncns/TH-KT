@@ -35,10 +35,6 @@ def test_session(test_app: Flask):
     yield db.session
     db.session.rollback()
 
-@pytest.fixture
-def test_cloudinary(monkeypatch):
-    def fake_upload(file):
-        return { 'secure_url':'https:fake-image.png'}
-    monkeypatch.setattr('cloudinary.uploader.upload', fake_upload)
+
 
 

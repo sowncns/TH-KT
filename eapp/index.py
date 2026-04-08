@@ -111,7 +111,7 @@ def carts_routes():
 
 
     @app.route('/api/pay', methods=['post'])
-    @login_required
+    # @login_required
     def pay():
         try:
             dao.add_receipt(cart=session.get('cart'))

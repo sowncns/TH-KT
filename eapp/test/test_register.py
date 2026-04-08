@@ -1,4 +1,4 @@
-from eapp.test.test_base import  test_app ,test_session ,test_cloudinary
+from eapp.test.test_base import  test_app ,test_session
 from eapp.dao import add_user
 from eapp.dao import User
 import pytest
@@ -13,6 +13,13 @@ def test_success(test_session,test_app):
 def test_password(password,test_app):
     with pytest.raises(ValueError):
         add_user(username="1a"*4,password=password,name='admin',avatar=None)
+
+
+@pytest.fixture
+def test_cloudinary(monkeypatch):
+    def fake_upload(file):
+        return { 'secure_url':'https:fake-image.png'}
+    monkeypatch.setattr('cloudinary.uploader.upload', fake_upload)
 
 
 def test_avt(test_session,test_cloudinary):
