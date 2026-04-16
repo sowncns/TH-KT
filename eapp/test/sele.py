@@ -4,7 +4,7 @@ from  selenium.webdriver.common.by import By
 
 
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(service=service)
 driver.get('https://vnexpress.net/')
 article = driver.find_elements(By.CSS_SELECTOR,'#automation_TV0')
 for a in article:
